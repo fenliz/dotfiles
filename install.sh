@@ -1,5 +1,4 @@
-source ./installer/variables.sh
-source ./installer/functions.sh
+source ./install.helpers.sh
 
 title "Development setup script..."
 
