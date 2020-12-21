@@ -1,0 +1,10 @@
+[user]
+	name = Forsberg Hedberg Charlie
+	email = cfh91@hotmail.com
+[credential]
+	helper = /mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status

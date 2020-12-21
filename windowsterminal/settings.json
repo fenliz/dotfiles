@@ -1,0 +1,90 @@
+{
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "defaultProfile": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+    
+    "experimental.rendering.forceFullRepaint": true,
+    "showTerminalTitleInTitlebar": true, 
+
+    "initialCols": 120,
+    "initialRows": 60,
+
+    "copyOnSelect": false,
+    "copyFormatting": false,
+
+    "profiles":
+    {
+        "defaults":
+        {
+            "fontFace": "CaskaydiaCove NF",
+            "fontSize": 10,
+            "colorScheme": "Gruvbox Dark",
+            "snapOnInput": true,
+            "padding": "15, 0, 0, 0",
+            "cursorShape": "bar",
+            "startingDirectory": "%USERPROFILE%"
+        },
+
+        "list":
+        [
+            {
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44ca}",
+                "name": "Bash",
+                "commandline": "\"%PROGRAMFILES%\\git\\usr\\bin\\bash.exe\" -i -l"
+            },
+            {
+                "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+                "name": "Ubuntu",
+                "commandline": "wsl",
+                "startingDirectory": "//wsl$/Ubuntu/home/charlie/development"
+            },
+            {
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "name": "Windows PowerShell",
+                "commandline": "powershell.exe"
+            },
+            {
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "name": "Command Prompt",
+                "commandline": "cmd.exe"
+            }
+        ]
+    },
+
+    "schemes": [
+        {
+            "name": "Gruvbox Dark",
+            "black": "#1e1e1e",
+            "red": "#be0f17",
+            "green": "#868715",
+            "yellow": "#cc881a",
+            "blue": "#377375",
+            "purple": "#a04b73",
+            "cyan": "#578e57",
+            "white": "#978771",
+            "brightBlack": "#7f7061",
+            "brightRed": "#f73028",
+            "brightGreen": "#aab01e",
+            "brightYellow": "#f7b125",
+            "brightBlue": "#719586",
+            "brightPurple": "#c77089",
+            "brightCyan": "#7db669",
+            "brightWhite": "#e6d4a3",
+            "background": "#1e1e1e",
+            "foreground": "#e6d4a3"
+        }
+    ],
+
+    "keybindings":
+    [
+        { "command": {"action": "copy", "singleLine": false }, "keys": "ctrl+c" },
+        { "command": "paste", "keys": "ctrl+v" },
+        { "command": "find", "keys": "ctrl+shift+f" },
+        { "command": { "action": "splitPane", "split": "auto", "splitMode": "duplicate" }, "keys": "alt+shift+d" },
+        { "command": "closePane", "keys": "ctrl+shift+w" },
+        { "command": "newTab", "keys": "ctrl+shift+t" },
+        { "command": null, "keys": "ctrl+," },
+        { "command": "openSettings", "keys": "alt+," }
+    ],
+
+    "disabledProfileSources": ["Windows.Terminal.Wsl", "Windows.Terminal.Azure", "Windows.Terminal.PowershellCore"]
+}
