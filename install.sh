@@ -20,6 +20,9 @@ section "Installing software..." && {
 }
 
 section "Setup Configuration..." && {
+    info "- git: .gitconfig"
+    link_file "$DOTFILES/git/.gitconfig" "$HOME/.gitconfig"
+
     info "- zsh: .zshrc"
     link_file "$DOTFILES/zsh/.zshrc" "$HOME/.zshrc"
 
