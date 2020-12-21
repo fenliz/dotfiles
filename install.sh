@@ -16,18 +16,34 @@ section "Settings environment variables" && {
 
 section "Installing software..." && {
     try_install_software git
-    try_install_software zsh
+    try_install_software zsh 
+    
+    if [ ! -d "$HOME/.oh-my-zsh" ]; then
+        info "- ohmyzsh: Installing..."
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+        git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    else
+        info "- ohmyzsh: Already installed"
+    fi
 }
 
-section "Setup Configuration..." && {
-    info "- git: .gitconfig"
+section "Setup configuration..." && {
+    info "- git: link .gitconfig"
     link_file "$DOTFILES/git/.gitconfig" "$HOME/.gitconfig"
 
     info "- zsh: .zshrc"
     link_file "$DOTFILES/zsh/.zshrc" "$HOME/.zshrc"
 
+    info "- zsh: set as default shell"
+    sudo chsh -s $(which zsh) $(whoami)
+
     info "- Windows Terminal: settings.json"
     copy_file "$DOTFILES/windowsterminal/settings.json" "$LOCALAPPDATA/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
 }
 
-title "Done!"
+if [ $SHELL = "/bin/bash" ]; then
+    title "Done, Please restart the shell!"
+else
+    title "Done!"
+fi

@@ -30,12 +30,15 @@ function needs_installation {
        return 1
     fi
 }
+
 function try_install_software {
     if needs_installation $1; then
         info "- $1: Installing..."
         sudo apt install $1 -y -qq
+        return 1
     else
         info "- $1: Already installed"
+        return 0
     fi
 }
 
