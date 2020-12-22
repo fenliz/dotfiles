@@ -35,7 +35,7 @@
                 "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
                 "name": "Ubuntu",
                 "commandline": "wsl",
-                "startingDirectory": "//wsl$/Ubuntu/home/charlie/development"
+                "startingDirectory": "//wsl$/Ubuntu-20.04/home/charlie"
             },
             {
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
