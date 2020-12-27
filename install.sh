@@ -1,4 +1,4 @@
-source ./install.helpers.sh
+source $DOTFILES/install.helpers.sh
 
 title "Development setup script..."
 
