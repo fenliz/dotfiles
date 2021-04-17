@@ -34,8 +34,18 @@ set noshowmode
 " Add space beside linenumbers for special symbols
 set signcolumn=yes
 
-" More space for the command bar
-set cmdheight=2
-
 " Improves performance(?)
 set updatetime=50
+
+" Code completion
+set completeopt=menuone,noinsert,noselect
+
+" Avoid showing extra message when using completion
+set shortmess+=c
+
+" Color theme
+set termguicolors
+colorscheme gruvbox
+
+" Encoding
+set encoding=UTF-8

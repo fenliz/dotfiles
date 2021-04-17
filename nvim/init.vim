@@ -1,14 +1,40 @@
 call plug#begin('~/.vim/plugged')
 
-" Telescope
+" Telescope (Fuzzy finder)
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
+" Gruvbox (theme)
 Plug 'gruvbox-community/gruvbox'
 
+" LSP (Language server)
+Plug 'neovim/nvim-lspconfig'
+
+" Code completion
+Plug 'nvim-lua/completion-nvim'
+
+" Syntax highlighting
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+
+" Project explorer
+Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+" Statusline
+Plug 'hoob3rt/lualine.nvim'
+
+" Editorconfig
+Plug 'editorconfig/editorconfig-vim'
+
+" Prettier
+Plug 'sbdchd/neoformat'
+
 call plug#end()
+
+" Import lua-scripts
+lua require('init')
 
 " Set leader key
 let mapleader=","
