@@ -1,3 +1,4 @@
+DOTFILES=/home/charlie/development/dotfiles
 source $DOTFILES/install.helpers.sh
 
 title "Development setup script..."
