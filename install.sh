@@ -25,14 +25,14 @@ section "Installing software..." && {
         git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     else
         info "- ohmyzsh: Already installed"
-		fi
+	fi
 
     if [ ! -d "$HOME/.tmux" ]; then
-			info "- tmux: Installing..."
-			git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-		else
-			info "- tmux: Already installed"
-		fi
+		info "- tmux: Installing..."
+		git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	else
+		info "- tmux: Already installed"
+	fi
 }
 
 section "Setup configuration..." && {
@@ -48,8 +48,8 @@ section "Setup configuration..." && {
     info "- Windows Terminal: settings.json"
     copy_file "$DOTFILES/windowsterminal/settings.json" "$LOCALAPPDATA/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
 
-		info "- tmux: .tmux.conf"
-		link_file "$DOTFILES/tmux/.tmux.conf" "$HOME/.tmux.conf"
+	info "- tmux: .tmux.conf"
+	link_file "$DOTFILES/tmux/.tmux.conf" "$HOME/.tmux.conf"
 
     info "- NVIM: .config/nvim"
     link_file "$DOTFILES/nvim" "$HOME/.config/nvim"
