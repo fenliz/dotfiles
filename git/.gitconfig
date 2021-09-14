@@ -1,0 +1,10 @@
+[user]
+	name = Forsberg Hedberg Charlie
+	email = cfh91@hotmail.com
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+[core]
+	editor = vim
