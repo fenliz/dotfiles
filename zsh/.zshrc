@@ -27,6 +27,8 @@ export DEVELOPMENT="$HOME/development"
 export DOTFILES="$DEVELOPMENT/dotfiles"
 export PYTHON="/usr/bin/python2"
 
+export PATH="$PATH:$HOME/.dotnet/tools/"
+
 # - Aliases 
 alias dev='cd $DEVELOPMENT'
 alias development='cd $DEVELOPMENT'
