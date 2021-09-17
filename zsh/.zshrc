@@ -39,15 +39,6 @@ alias dotfiles-commit='git -C $DOTFILES add --all && git -C $DOTFILES commit -m 
 alias dotfiles-status='git -C $DOTFILES status'
 alias dotfiles-update='git -C $DOTFILES pull && bash $DOTFILES/install.sh'
 
-if [ ! -f $DOTFILES/zsh/.env.local ]; then
-	source $DOTFILES/zsh/.env.local
-fi
-
-if [ ! -f .env.local ]; then
-	source .env.local
-fi
-
-
 # - Settings 
 bindkey '^ ' autosuggest-accept
 
@@ -84,7 +75,15 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
-alias luamake=/home/charlie/vendor/lua-language-server/3rd/luamake/luamake
+# alias luamake=/home/charlie/vendor/lua-language-server/3rd/luamake/luamake
+
+# Auto-start tmux
+if [[ -z "$TMUX" ]]; then
+	tmux a -t "main"
+	if [ $? != 0 ]; then
+		tmux new-session -s "main"
+	fi
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

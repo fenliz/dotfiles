@@ -17,7 +17,13 @@ M.test = function()
 
 	-- ((string) @prop (#eq? @prop "\"dependencies\""))
 	-- ((string) @prop (#eq? @prop "\"devDependencies\""))
-
+	-- ({
+	-- 	(pair
+	-- 		key: (string (string_content) @key)
+	-- 		value: (object) @value)
+	-- 	(#eq? @key "dependencies")
+	-- }) @deps
+	--
 	local bufnr = vim.api.nvim_get_current_buf()
 	local node = ts_utils.get_node_at_cursor()
 
@@ -28,6 +34,7 @@ M.reload = function()
 	package.loaded['custom_plugin'] = nil
 end
 
-return M
+return M.test()
+
 
 
