@@ -1,3 +1,17 @@
+local wk = require('which-key')
+
+wk.register({
+	g = {
+		name = 'Git',
+		g = { ':Neogit<CR>', 'Browser' },
+		G = { ':lua require("telescope.builtin").git_status()<CR>', 'Status' },
+		b = { ':lua require("telescope.builtin").git_branches()<CR>', 'Branches' },
+		c = { ':lua require("telescope.builtin").git_commits()<CR>', 'Commits' },
+		f = { ':lua require("telescope.builtin").git_bcommits()<CR>', 'File history' },
+		s = { ':lua require("telescope.builtin").git_stash()<CR>', 'Stashes' },
+	},
+}, { prefix = '<leader>' })
+
 local M = {}
 
 M.bootstrap = function()

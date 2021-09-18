@@ -56,8 +56,8 @@ local function plugins(use)
 	})
 
 	-- File explorer
-	use({ 'kyazdani42/nvim-tree.lua', requires
-		= 'kyazdani42/nvim-web-devicons'
+	use({ 'kyazdani42/nvim-tree.lua',
+		requires = 'kyazdani42/nvim-web-devicons'
 	})
 
 	-- Diagnostics list
@@ -101,6 +101,11 @@ local function plugins(use)
 	use({ 'folke/tokyonight.nvim',
 		requires = 'hoob3rt/lualine.nvim',
 		config = function() require('theme').bootstrap() end
+	})
+
+	-- Color highlight
+	use({ 'norcalli/nvim-colorizer.lua',
+		config = function() require('colorizer').setup() end
 	})
 
 	-- Navigation

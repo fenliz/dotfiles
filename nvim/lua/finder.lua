@@ -11,7 +11,6 @@ wk.register({
 		w = { ':lua require("telescope.builtin").grep_string{ search = vim.fn.expand("<cword>") }<CR>', 'Current word' },
 		f = { ':lua require("telescope.builtin").find_files()<CR>', 'Current directory' },
 		r = { ':lua require("telescope.builtin").oldfiles()<CR>', 'Recent files' },
-		b = { ':lua require("telescope.builtin").git_branches()<CR>', 'Git branches' },
 		d = { ':lua require("finder").search_dotfiles()<CR>', 'Dotfiles' },
 	},
 	["'"] = { ':lua require("telescope.builtin").marks()<CR>', 'Marks' },
