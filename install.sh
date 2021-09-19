@@ -48,9 +48,6 @@ section "Setup configuration..." && {
     info "- Windows Terminal: settings.json"
     copy_file "$DOTFILES/windowsterminal/settings.json" "$LOCALAPPDATA/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
 
-	info "- nog: init.lua"
-    copy_file "$DOTFILES/nog/init.lua" "$APPDATA/nog/config/init.lua"
-
 	info "- tmux: .tmux.conf"
 	link_file "$DOTFILES/tmux/.tmux.conf" "$HOME/.tmux.conf"
 

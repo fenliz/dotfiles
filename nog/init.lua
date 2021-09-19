@@ -1,21 +1,11 @@
-local direction_keys = {
-  h = "left",
-  j = "down",
-  k = "up",
-  l = "right"
-}
-
-local workspaces = { 1, 2, 3, 4, 5, 6, 7, 8, 9 }
-
 nog.config.work_mode = false
--- draws the app bar while nog is in work mode
 nog.config.display_app_bar = true
 nog.config.launch_on_startup = true
 nog.config.multi_monitor = true
--- hides the task bar while nog is in work mode
 nog.config.remove_task_bar = true
 
--- We customize the first two workspaces with a custom display text
+local workspaces = { 1, 2, 3, 4, 5, 6, 7, 8, 9 }
+
 nog.config.workspaces = {
   [1] = { text = " Code " },
   [2] = { text = " Browser " },
@@ -41,22 +31,19 @@ nog.nbind("alt+q", nog.win_close)
 nog.nbind("alt+m", nog.win_minimize)
 nog.nbind("alt+x", nog.quit)
 
--- nog.nbind_tbl will map each key to its value so writing the nog.nbind_tbl line is equal to the following
+-- Window movement
 nog.nbind("alt+l", function() nog.ws_focus("Right") end)
 nog.nbind("alt+k", function() nog.ws_focus("Up") end)
 nog.nbind("alt+j", function() nog.ws_focus("Down") end)
 nog.nbind("alt+h", function() nog.ws_focus("Left") end)
+
 nog.nbind("alt+control+l", function() nog.ws_swap("Right") end)
 nog.nbind("alt+control+k", function() nog.ws_swap("Up") end)
 nog.nbind("alt+control+j", function() nog.ws_swap("Down") end)
 nog.nbind("alt+control+h", function() nog.ws_swap("Left") end)
 
-nog.nbind("alt+plus", function()
-  nog.ws_set_split_direction("Vertical")
-end)
-nog.nbind("alt+minus", function()
-  nog.ws_set_split_direction("Horizontal")
-end)
+nog.nbind("alt+plus", function() nog.ws_set_split_direction("Vertical") end)
+nog.nbind("alt+minus", function() nog.ws_set_split_direction("Horizontal") end)
 
 nog.nbind("alt+control+f", nog.win_toggle_floating)
 nog.gbind("alt+control+w", nog.toggle_work_mode)
@@ -76,7 +63,7 @@ nog.config.bar.components = {
     right = {
         nog.components.active_mode(),
         nog.components.padding(4),
-        nog.components.fullscreen_indicator("[]"),
+        nog.components.fullscreen_indicator("Fullscreen"),
         nog.components.padding(1),
         nog.components.split_direction({ "|", "-" }),
         nog.components.padding(1),
