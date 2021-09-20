@@ -24,12 +24,16 @@ source $ZSH/oh-my-zsh.sh
 
 # - Environment Variables 
 export DEVELOPMENT="$HOME/development"
+export THIRD_PARTY="$HOME/third_party"
 export DOTFILES="$DEVELOPMENT/dotfiles"
 export PYTHON="/usr/bin/python2"
 
 export PATH="$PATH:$DOTFILES/scripts:$HOME/.dotnet/tools/"
 
+source $THIRD_PARTY/fzf-docker
+
 # - Aliases 
+alias vim='nvim'
 alias dev='cd $DEVELOPMENT'
 alias development='cd $DEVELOPMENT'
 alias dotfiles='cd $DOTFILES'
