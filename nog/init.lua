@@ -1,8 +1,8 @@
 nog.config.work_mode = false
-nog.config.display_app_bar = true
+nog.config.display_app_bar = false
 nog.config.launch_on_startup = true
 nog.config.multi_monitor = true
-nog.config.remove_task_bar = true
+nog.config.remove_task_bar = false
 
 local workspaces = { 1, 2, 3, 4, 5, 6, 7, 8, 9 }
 
@@ -29,7 +29,6 @@ nog.config.rules = {
 nog.nbind("alt+i", nog.win_ignore)
 nog.nbind("alt+q", nog.win_close)
 nog.nbind("alt+m", nog.win_minimize)
-nog.nbind("alt+x", nog.quit)
 
 -- Window movement
 nog.nbind("alt+l", function() nog.ws_focus("Right") end)
@@ -52,22 +51,3 @@ nog.nbind("alt+f", nog.ws_toggle_fullscreen)
 nog.nbind_tbl("alt+shift", nog.win_move_to_ws, workspaces)
 nog.nbind_tbl("alt+control", nog.ws_move_to_monitor, workspaces)
 nog.nbind_tbl("alt", nog.ws_change, workspaces)
-
-nog.config.bar.height = 20
-nog.config.bar.font_size = 16
-nog.config.bar.font = "FiraCode NF"
-
-nog.config.bar.components = {
-    left = { nog.components.workspaces() },
-    center = { nog.components.current_window() },
-    right = {
-        nog.components.active_mode(),
-        nog.components.padding(4),
-        nog.components.fullscreen_indicator("Fullscreen"),
-        nog.components.padding(1),
-        nog.components.split_direction({ "|", "-" }),
-        nog.components.padding(1),
-        nog.components.datetime("%T"),
-
-    }
-}
