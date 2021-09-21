@@ -30,7 +30,7 @@ export PYTHON="/usr/bin/python2"
 
 export PATH="$PATH:$DOTFILES/scripts:$HOME/.dotnet/tools/"
 
-source $THIRD_PARTY/fzf-docker
+source $THIRD_PARTY/fzf-docker/docker-fzf
 
 # - Aliases 
 alias vim='nvim'
@@ -46,6 +46,11 @@ alias dotfiles-update='git -C $DOTFILES pull && bash $DOTFILES/install.sh'
 # - Settings 
 bindkey '^ ' autosuggest-accept
 
+# Disable ALT+{0-9} (readline arguments)
+for i in - {0..9} ; do
+	bindkey -r '\e'$i
+done
+
 # - Functions
 
 # CTRL-Z out of vim and this makes CTRL-Z go back to vim again
@@ -57,6 +62,8 @@ function resume_foreground {
 }
 zle -N resume_foreground
 bindkey "^Z" resume_foreground
+
+
 
 # - Startup
 
