@@ -1,9 +1,19 @@
-[user]
-	name = Forsberg Hedberg Charlie
 [alias]
 	co = checkout
 	br = branch
 	ci = commit
 	st = status
+	undo = reset HEAD~1 --mixed
+	lg = !git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit -30
+[user]
+	name = Forsberg Hedberg Charlie
 [core]
 	editor = vim
+[rebase]
+	autoStash = true
+[pull]
+	rebase = true
+[fetch]
+	prune = true
+[push]
+	default = current
