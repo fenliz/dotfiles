@@ -7,6 +7,7 @@
 	lg = !git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit -30
 [user]
 	name = Forsberg Hedberg Charlie
+	email = cfh91@hotmail.com
 [core]
 	editor = vim
 [rebase]
