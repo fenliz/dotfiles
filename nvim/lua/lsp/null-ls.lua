@@ -15,6 +15,7 @@ M.setup = function(on_attach)
 
 			-- Formatting
 			null_ls.builtins.formatting.eslint_d,
+			null_ls.builtins.formatting.prettierd,
 		}
 	});
 

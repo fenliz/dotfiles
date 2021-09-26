@@ -29,7 +29,9 @@ export THIRD_PARTY="$HOME/third_party"
 export DOTFILES="$DEVELOPMENT/dotfiles"
 export PYTHON="/usr/bin/python2"
 
-export PATH="$PATH:$DOTFILES/scripts:$HOME/.dotnet/tools/"
+export PATH="$PATH:$DOTFILES/scripts"
+export PATH="$PATH:$HOME/.dotnet/tools/"
+export PATH="$PATH:$THIRD_PARTY/prettierd/bin"
 
 source $THIRD_PARTY/fzf-docker/docker-fzf
 

@@ -105,12 +105,16 @@ M.bootstrap = function()
 	for _, server in pairs(servers) do
 		local config = make_config()
 
-		if server == 'lua' then
+		if server == 'lua'  then
 			require('lsp.lua').extend_config(config)
 		elseif server == 'php' then
 			require('lsp.php').extend_config(config)
 		elseif server == 'typescript' then
 			require('lsp.typescript').extend_config(config)
+		elseif server == 'html' then
+			require('lsp.html').extend_config(config)
+		elseif server == 'json' then
+			require('lsp.json').extend_config(config)
 		end
 
 		lspconfig[server].setup(config)

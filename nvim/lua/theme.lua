@@ -19,8 +19,8 @@ g.tokyonight_style = 'night'
 vim.cmd('colorscheme tokyonight')
 
 -- Avoid italics (problem with rendering end of line characters)
-g.tokyonight_italic_comments = false
-g.tokyonight_italic_keywords = false
+-- g.tokyonight_italic_comments = false
+-- g.tokyonight_italic_keywords = false
 
 local M = {}
 

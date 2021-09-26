@@ -1,10 +1,12 @@
 [alias]
-	co = checkout
-	br = branch
-	ci = commit
-	st = status
-	undo = reset HEAD~1 --mixed
-	lg = !git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit -30
+	co = "checkout"
+	br = "branch"
+	ci = "commit"
+	st = "status -sb"
+	undo = "reset HEAD~1 --mixed"
+	last = "log -1 HEAD --stat"
+	lg = "log --pretty=format:\"%C(blue)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit -30"
+	br = "branch --format='%(HEAD) %(color:blue)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate"
 [user]
 	name = Forsberg Hedberg Charlie
 	email = cfh91@hotmail.com
