@@ -9,13 +9,13 @@ g.nvim_tree_width = 30
 g.nvim_tree_indent_markers = 1
 
 -- Open file explorer in new tab if it was already open
-g.nvim_tree_tab_open = 1
+-- g.nvim_tree_tab_open = 1
 
 -- Follow location of open file in file explorer
-g.nvim_tree_follow = 1
+-- g.nvim_tree_follow = 1
 
 -- Open on startup
-g.nvim_tree_auto_open = 1
+-- g.nvim_tree_auto_open = 1
 
 -- Ignore git-ignored files
 g.nvim_tree_gitignore = 1
@@ -52,3 +52,17 @@ wk.register({
 		c = { ':NvimTreeClose<CR>', 'Close' },
 	}
 }, { prefix = '<leader>' })
+
+local M = {}
+
+M.bootstrap = function()
+	require('nvim-tree').setup({
+		open_on_setup = true,
+		open_on_tab = true,
+		update_focused_file = {
+			enable = true
+		}
+	})
+end
+
+return M

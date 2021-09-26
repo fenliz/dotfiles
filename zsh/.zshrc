@@ -5,8 +5,19 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# - Environment Variables 
+export DEVELOPMENT="$HOME/development"
+export THIRD_PARTY="$HOME/third_party"
+export DOTFILES="$DEVELOPMENT/dotfiles"
+export PYTHON="/usr/bin/python2"
+
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$DOTFILES/scripts"
+export PATH="$PATH:$HOME/.dotnet/tools/"
+export PATH="$PATH:$THIRD_PARTY/prettierd/bin"
 export DEFAULT_USER="$(whoami)"
 export ZSH="$HOME/.oh-my-zsh"
+
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
@@ -22,17 +33,6 @@ plugins=(
 zstyle :omz:plugins:ssh-agent identities id_rsa id_rsa_gmail
 
 source $ZSH/oh-my-zsh.sh
-
-# - Environment Variables 
-export DEVELOPMENT="$HOME/development"
-export THIRD_PARTY="$HOME/third_party"
-export DOTFILES="$DEVELOPMENT/dotfiles"
-export PYTHON="/usr/bin/python2"
-
-export PATH="$PATH:$DOTFILES/scripts"
-export PATH="$PATH:$HOME/.dotnet/tools/"
-export PATH="$PATH:$THIRD_PARTY/prettierd/bin"
-
 source $THIRD_PARTY/fzf-docker/docker-fzf
 
 # - Aliases 
@@ -89,7 +89,9 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
-# alias luamake=/home/charlie/vendor/lua-language-server/3rd/luamake/luamake
+if [ -r $HOME/.zshrc.local ]; then
+	source $HOME/.zshrc.local
+fi
 
 # Auto-start tmux
 if [[ -z "$TMUX" ]]; then
