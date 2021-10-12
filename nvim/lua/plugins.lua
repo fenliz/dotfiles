@@ -16,10 +16,11 @@ local function plugins(use)
 	use({ 'neovim/nvim-lspconfig',
 		requires = {
 			'kabouzeid/nvim-lspinstall',
-			'glepnir/lspsaga.nvim',
 			'nvim-lua/plenary.nvim',
 			'jose-elias-alvarez/null-ls.nvim',
-			'ray-x/lsp_signature.nvim'
+			'ray-x/lsp_signature.nvim',
+			'RishabhRD/popfix',
+			'RishabhRD/nvim-lsputils',
 		},
 		config = function() require('lsp').bootstrap() end
 	})
@@ -100,7 +101,10 @@ local function plugins(use)
 
 	-- Color theme
 	use({ 'folke/tokyonight.nvim',
-		requires = 'hoob3rt/lualine.nvim',
+		requires = {
+			'hoob3rt/lualine.nvim',
+			'akinsho/bufferline.nvim'
+		},
 		config = function() require('theme').bootstrap() end
 	})
 

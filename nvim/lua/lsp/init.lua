@@ -1,24 +1,55 @@
+ local bufnr = vim.api.nvim_buf_get_number(0)
+
+vim.lsp.handlers['textDocument/codeAction'] = function(_, _, actions)
+	require('lsputil.codeAction').code_action_handler(nil, actions, nil, nil, nil)
+end
+
+vim.lsp.handlers['textDocument/references'] = function(_, _, result)
+	require('lsputil.locations').references_handler(nil, result, { bufnr = bufnr }, nil)
+end
+
+vim.lsp.handlers['textDocument/definition'] = function(_, method, result)
+	require('lsputil.locations').definition_handler(nil, result, { bufnr = bufnr, method = method }, nil)
+end
+
+vim.lsp.handlers['textDocument/declaration'] = function(_, method, result)
+	require('lsputil.locations').declaration_handler(nil, result, { bufnr = bufnr, method = method }, nil)
+end
+
+vim.lsp.handlers['textDocument/typeDefinition'] = function(_, method, result)
+	require('lsputil.locations').typeDefinition_handler(nil, result, { bufnr = bufnr, method = method }, nil)
+end
+
+vim.lsp.handlers['textDocument/implementation'] = function(_, method, result)
+	require('lsputil.locations').implementation_handler(nil, result, { bufnr = bufnr, method = method }, nil)
+end
+
+vim.lsp.handlers['textDocument/documentSymbol'] = function(_, _, result, _, bufn)
+	require('lsputil.symbols').document_handler(nil, result, { bufnr = bufn }, nil)
+end
+
+vim.lsp.handlers['textDocument/symbol'] = function(_, _, result, _, bufn)
+	require('lsputil.symbols').workspace_handler(nil, result, { bufnr = bufn }, nil)
+end
+
 local utils = require('utils')
 
 -- Trigger code actions
-utils.nmap('ca', ':lua require("lspsaga.codeaction").code_action()<CR>')
-utils.vmap('ca', ':lua require("lspsaga.codeaction").range_code_action()<CR>')
-
--- Show definition and references
-utils.nmap('gh', ':lua require("lspsaga.provider").lsp_finder()<CR>')
+utils.nmap('ca', ':lua vim.lsp.buf.code_action()<CR>')
+utils.vmap('ca', ':lua vim.lsp.buf.code_action()<CR>')
 
 -- List references
 utils.nmap('gR', ':TroubleToggle lsp_references<CR>')
 
 -- Hover
-utils.nmap('K', ':lua require("lspsaga.hover").render_hover_doc()<CR>')
+utils.nmap('K', ':lua vim.lsp.buf.hover()<CR>')
 
 -- Rename
-utils.nmap('gr', ':lua require("lspsaga.rename").rename()<CR>')
+utils.nmap('gr', ':lua vim.lsp.buf.rename()<CR>')
 
 -- Jump between warnings/errors
-utils.nmap('<C-]>', ':lua require("lspsaga.diagnostic").lsp_jump_diagnostic_next()<CR>')
-utils.nmap('<C-[>', ':lua require("lspsaga.diagnostic").lsp_jump_diagnostic_prev()<CR>')
+utils.nmap('<C-]>', ':lua vim.lsp.diagnostic.goto_next()<CR>')
+utils.nmap('<C-[>', ':lua vim.lsp.diagnostic.goto_prev()<CR>')
 
 
 local on_attach = function(client, bufnr)
@@ -96,7 +127,6 @@ local M = {}
 M.bootstrap = function()
 	local lspconfig = require('lspconfig')
 	local lspinstall = require('lspinstall')
-	local lspsaga = require('lspsaga')
 	local lspsignature = require('lsp_signature')
 
 	lspinstall.setup()
@@ -117,6 +147,8 @@ M.bootstrap = function()
 			require('lsp.json').extend_config(config)
 		end
 
+		require('lsp.csharp')
+
 		lspconfig[server].setup(config)
 	end
 
@@ -128,12 +160,9 @@ M.bootstrap = function()
 		vim.cmd('bufdo e')
 	end
 
-	lspsaga.init_lsp_saga({
-		code_action_prompt = { enable = false },
-		border_style = 'round'
+	lspsignature.setup({
+		hint_enable = false
 	})
-
-	lspsignature.setup()
 end
 
 return M

@@ -1,9 +1,6 @@
 local utils = require('utils')
 local o = vim.o
 
--- Enable mouse
-o.mouse = 'a';
-
 -- Start scrolling x lines from edge
 o.scrolloff = 8
 
@@ -24,6 +21,10 @@ utils.nmap('<C-k>', ':lua require("navigation").move_to_window("k")<CR>')
 utils.nmap('<C-j>', ':lua require("navigation").move_to_window("j")<CR>')
 utils.nmap('<C-h>', ':lua require("navigation").move_to_window("h")<CR>')
 utils.nmap('<C-l>', ':lua require("navigation").move_to_window("l")<CR>')
+
+-- Buffer navigation
+utils.nmap('<Tab>', ':BufferLineCycleNext<CR>')
+utils.nmap('<S-Tab>', ':BufferLineCyclePrev<CR>')
 
 local M = {}
 
